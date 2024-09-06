@@ -1,5 +1,5 @@
 {% set name = "sqlglotrs" %}
-{% set version = "0.2.10" %}
+{% set version = "0.2.12" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sqlglotrs-{{ version }}.tar.gz
-  sha256: 1758b66fc2dc34f89cd8ec851fe25460dc03dba60eb838c9961fa23c6d93b827
+  sha256: f104a98182761d4613f920eda7ec5fc921afb3608f7db648206ce06dd10a6be5
 
 build:
   skip: true  # [py<37]

@@ -8,10 +8,13 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sqlglotrs-{{ version }}.tar.gz
   sha256: b3b73ba1c9c4699de6d9c710f23fbc639651af0ac73eec831bcd298eda059582
+  patches:
+    - 0001-Apply-upstream-cross-compilation-patch.patch
 
 build:
   skip: true  # [py<37]
   script:
+    - cargo patch
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
@@ -25,6 +28,7 @@ requirements:
     - {{ compiler('rust') }}
     - maturin >=1.4,<2.0                     # [build_platform != target_platform]
     - cargo-bundle-licenses
+    - cargo-patch
   host:
     - python
     - maturin >=1.4,<2.0

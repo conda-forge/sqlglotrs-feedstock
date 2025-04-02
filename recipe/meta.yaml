@@ -14,7 +14,7 @@ source:
 build:
   skip: true  # [py<37]
   script:
-    - cargo patch
+    - cargo patch  # [build_platform != target_platform]
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
@@ -28,7 +28,7 @@ requirements:
     - {{ compiler('rust') }}
     - maturin >=1.4,<2.0                     # [build_platform != target_platform]
     - cargo-bundle-licenses
-    - cargo-patch
+    - cargo-patch                            # [build_platform != target_platform]
   host:
     - python
     - maturin >=1.4,<2.0

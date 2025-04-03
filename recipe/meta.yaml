@@ -9,7 +9,7 @@ source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sqlglotrs-{{ version }}.tar.gz
   sha256: b3b73ba1c9c4699de6d9c710f23fbc639651af0ac73eec831bcd298eda059582
   patches:
-    - 0001-Apply-upstream-cross-compilation-patch.patch
+    - 0001-Apply-upstream-cross-compilation-patch.patch  # [build_platform != target_platform]
 
 build:
   skip: true  # [py<37]

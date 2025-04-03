@@ -1,12 +1,12 @@
-From 254f285c1c3433f68149b25679b21234c67913f5 Mon Sep 17 00:00:00 2001
+From 36152431589535ca820964e15774783bb012b5c8 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwelk@xhochy.com>
 Date: Wed, 2 Apr 2025 21:14:43 +0200
 Subject: [PATCH] Apply upstream cross-compilation patch
 
 ---
  ...nda-workaround-for-detecting-shared-buil.patch | 15 +++++++++++++++
- Cargo.toml                                        |  6 ++++++
- 2 files changed, 21 insertions(+)
+ Cargo.toml                                        |  9 +++++++++
+ 2 files changed, 24 insertions(+)
  create mode 100644 0001-Apply-the-conda-workaround-for-detecting-shared-buil.patch
 
 diff --git a/0001-Apply-the-conda-workaround-for-detecting-shared-buil.patch b/0001-Apply-the-conda-workaround-for-detecting-shared-buil.patch
@@ -31,10 +31,10 @@ index 0000000..d10bf83
 + "#;
 + 
 diff --git a/Cargo.toml b/Cargo.toml
-index 970f9ae..ed9f31b 100644
+index 970f9ae..02a3b07 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -31,3 +31,9 @@ criterion = "0.5"
+@@ -31,3 +31,12 @@ criterion = "0.5"
  serde = { version = "1", features = ["derive"]  }
  serde_json = { version = "1" }
  sqlglotrs = { path = "." , features = ["profiling"] }
@@ -44,3 +44,6 @@ index 970f9ae..ed9f31b 100644
 +patches = [
 +    { path = "0001-Apply-the-conda-workaround-for-detecting-shared-buil.patch", source = "GithubPrDiff" }
 +]
++
++[patch.crates-io]
++pyo3-build-config = { path = "./target/patch/pyo3-build-config-0.22.6" }

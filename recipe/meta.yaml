@@ -1,5 +1,5 @@
 {% set name = "sqlglotrs" %}
-{% set version = "0.7.2" %}
+{% set version = "0.7.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sqlglotrs-{{ version }}.tar.gz
-  sha256: 7c7b5f422a54307de0311b574dc631c099b0fdfc4b5d624b92b11b8df0b5fa16
+  sha256: caadc572c8a194f99d6ba44d02f9ada0110e3d47cca3330c81f4aa608f1143eb
   # patches:
   #   - 0001-Apply-upstream-cross-compilation-patch.patch  # [build_platform != target_platform]
 

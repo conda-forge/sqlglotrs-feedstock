@@ -1,0 +1,59 @@
+schema_version: 1
+
+context:
+  name: sqlglotrs
+  version: 0.7.3
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sqlglotrs-${{ version }}.tar.gz
+  sha256: caadc572c8a194f99d6ba44d02f9ada0110e3d47cca3330c81f4aa608f1143eb
+
+build:
+  number: 0
+  script:
+    - if: build_platform != target_platform
+      then: cargo patch
+    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - maturin >=1.4,<2.0
+        - cargo-patch
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - ${{ compiler('rust') }}
+    - cargo-bundle-licenses
+  host:
+    - python
+    - maturin >=1.4,<2.0
+    - pip
+  run:
+    - python
+
+tests:
+  - python:
+      imports:
+        - sqlglotrs
+      pip_check: true
+
+about:
+  summary: SQLGlot tokenizer implementation in Rust
+  license: MIT
+  license_file:
+    - THIRDPARTY.yml
+    - LICENSE
+  homepage: https://github.com/tobymao/sqlglot
+  repository: https://github.com/tobymao/sqlglot/tree/main/sqlglotrs
+
+extra:
+  recipe-maintainers:
+    - thewchan

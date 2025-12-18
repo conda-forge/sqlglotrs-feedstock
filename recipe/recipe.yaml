@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: sqlglotrs
-  version: "0.10.0"
+  version: "0.9.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sqlglotrs-${{ version }}.tar.gz
-  sha256: dbf91b9547db4f9594e4897afe72cd39e2aa73b8728531fede8861cb2be9aea0
+  sha256: 72f61561d63607a8d88f5da608c11e21b2a57773ca631e6b89a4eed668da2db5
 
 build:
   number: 0

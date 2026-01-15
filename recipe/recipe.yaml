@@ -13,7 +13,7 @@ source:
   sha256: a9fd11690a7bb1160ad157d0c1b6d389d19cc6542854016b6745510253ba502d
 
 build:
-  number: 0
+  number: 1
   script:
     - if: build_platform != target_platform
       then: cargo patch

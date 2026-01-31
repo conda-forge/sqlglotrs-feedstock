@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: sqlglotrs
-  version: "0.11.0"
+  version: "0.12.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sqlglotrs-${{ version }}.tar.gz
-  sha256: a9fd11690a7bb1160ad157d0c1b6d389d19cc6542854016b6745510253ba502d
+  sha256: 28d1ecc8afc6323a537d74df8c5f4545641742cf9b965813de1fb72ddc1bfe5c
 
 build:
-  number: 1
+  number: 0
   script:
     - if: build_platform != target_platform
       then: cargo patch
